@@ -1,28 +1,19 @@
-# All Type of Calculator
+# All Type of Calculator — React
 
-A collection of simple calculators built with HTML, CSS, and JavaScript:
+This repository now uses a single React app located in `react-app/`.
 
-- Age Calculator
-- BMI Calculator
-- Basic Calculator
-- Cash Calculator
-- Expense Tracker
-- Fixed Deposit (FD) Calculator
-- Loan Calculator
-- Tip Calculator
+- Development:
+  - cd react-app
+  - npm install
+  - npm run dev
+- Production build:
+  - npm run build
+- Preview build locally:
+  - npm run preview
 
-## Live Demo
+Deployment
+- GitHub Actions builds `react-app` and deploys its `dist` to GitHub Pages.
+- Live URL: https://adhishmagic.github.io/All_type_of_Calculator/
 
-Once GitHub Pages finishes deploying, your site will be available at:
-
-https://adhishmagic.github.io/All_type_of_Calculator/
-
-If the link 404s initially, wait ~1–3 minutes for the first Pages deployment to complete.
-
-## Local Development
-
-Open `index.html` in your browser, or serve the folder with a simple HTTP server.
-
-## Project Structure
-
-See folders for each calculator. Each contains `index.html`, `script.js`, and `style.css` (or `styles.css`). The root `index.html` links to the individual tools.
+Notes
+- Legacy static folders have been removed. All calculators live under the React app routes.
