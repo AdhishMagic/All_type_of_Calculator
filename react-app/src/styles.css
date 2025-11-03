@@ -1,0 +1,17 @@
+body { font-family: Arial, sans-serif; background: #b3acca; margin: 0; }
+.header { background: #18122B; color:#FBFBFB; padding: 16px; text-align:center; }
+.header ul { list-style:none; padding:0; margin: 8px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+.header li { display:inline-block; border:1px solid #C5BAFF; padding:6px 12px; border-radius:6px; background:#2A2F4F; }
+.header a { color:#FBFBFB; text-decoration:none; }
+.content { padding: 24px; max-width: 900px; margin: 0 auto 64px; }
+.footer { position: fixed; bottom:0; left:0; right:0; background:#18122B; color:#FBFBFB; text-align:center; padding:8px; }
+.card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 16px; }
+.input-row { display:flex; gap:12px; flex-wrap:wrap; }
+.input-row input, .input-row select { padding:8px; border-radius:6px; border:1px solid #ccc; }
+button { background:#2A2F4F; color:#FBFBFB; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+button:hover { background:#3A3F6D; }
+.display { background:#111; color:#0f0; font-family: ui-monospace, Menlo, Consolas, monospace; padding:12px; border-radius:8px; min-height: 40px; }
+.grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.grid button { padding:12px; font-size:16px; }
+.expense-item { display:flex; justify-content: space-between; align-items:center; border-bottom:1px solid #eee; padding:8px 0; }
+.expense-item button { background:#b00020; }
