@@ -1,17 +1,109 @@
-body { font-family: Arial, sans-serif; background: #b3acca; margin: 0; }
-.header { background: #18122B; color:#FBFBFB; padding: 16px; text-align:center; }
-.header ul { list-style:none; padding:0; margin: 8px 0 0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
-.header li { display:inline-block; border:1px solid #C5BAFF; padding:6px 12px; border-radius:6px; background:#2A2F4F; }
-.header a { color:#FBFBFB; text-decoration:none; }
-.content { padding: 24px; max-width: 900px; margin: 0 auto 64px; }
-.footer { position: fixed; bottom:0; left:0; right:0; background:#18122B; color:#FBFBFB; text-align:center; padding:8px; }
-.card { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 16px; }
-.input-row { display:flex; gap:12px; flex-wrap:wrap; }
-.input-row input, .input-row select { padding:8px; border-radius:6px; border:1px solid #ccc; }
-button { background:#2A2F4F; color:#FBFBFB; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
-button:hover { background:#3A3F6D; }
-.display { background:#111; color:#0f0; font-family: ui-monospace, Menlo, Consolas, monospace; padding:12px; border-radius:8px; min-height: 40px; }
-.grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.grid button { padding:12px; font-size:16px; }
-.expense-item { display:flex; justify-content: space-between; align-items:center; border-bottom:1px solid #eee; padding:8px 0; }
-.expense-item button { background:#b00020; }
+/* Design system */
+:root {
+	--bg: #0b1020;
+	--bg-gradient: radial-gradient(1200px 600px at 10% -20%, #18223f 0%, transparent 60%),
+									radial-gradient(1000px 500px at 110% 10%, #1f2b52 0%, transparent 60%),
+									linear-gradient(180deg, #0b1020 0%, #0a0f1e 100%);
+	--surface: #121a33;
+	--surface-2: #0f162d;
+	--text: #e8ecf8;
+	--muted: #9aa4bf;
+	--border: rgba(255,255,255,0.08);
+	--primary: #6aa2ff;
+	--primary-600: #4c84e6;
+	--success: #00c48c;
+	--danger: #ff5a74;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+	margin: 0;
+	font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+	color: var(--text);
+	background: var(--bg-gradient);
+}
+
+.app { min-height: 100%; display: flex; flex-direction: column; }
+
+.container { width: min(1100px, 100% - 32px); margin-inline: auto; }
+
+/* Header */
+.header {
+	position: sticky; top: 0; z-index: 20;
+	backdrop-filter: blur(8px);
+	background: linear-gradient(180deg, rgba(10,15,30,0.85), rgba(10,15,30,0.55));
+	border-bottom: 1px solid var(--border);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { display:flex; align-items:center; gap:10px; font-weight: 700; letter-spacing: .4px; }
+.brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 16px var(--primary); }
+.brand a { color: var(--text); text-decoration: none; font-size: 18px; }
+
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.nav a {
+	display: inline-block;
+	padding: 8px 12px;
+	border-radius: 8px;
+	color: var(--muted);
+	text-decoration: none;
+	border: 1px solid transparent;
+}
+.nav a:hover { color: var(--text); border-color: var(--border); background: rgba(255,255,255,0.04); }
+.nav a.active { color: #0c1326; background: var(--primary); border-color: transparent; box-shadow: 0 4px 24px rgba(106,162,255,.25); }
+
+/* Layout */
+.content { flex: 1; padding: 28px 0 40px; }
+.footer { border-top: 1px solid var(--border); color: var(--muted); text-align: center; padding: 14px 0; background: linear-gradient(180deg, rgba(10,15,30,0.45), rgba(10,15,30,0.65)); }
+
+/* Cards */
+.card {
+	background: linear-gradient(180deg, rgba(18,26,51,0.7), rgba(18,26,51,0.5));
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 18px;
+	box-shadow: 0 10px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+	margin: 0 0 18px 0;
+}
+.card h3 { margin: 0 0 12px; letter-spacing: .3px; }
+
+/* Forms */
+.input-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.input-row input, .input-row select {
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	background: var(--surface-2);
+	color: var(--text);
+	outline: none;
+}
+.input-row input::placeholder { color: #7d86a2; }
+.input-row input:focus, .input-row select:focus { border-color: rgba(106,162,255,.6); box-shadow: 0 0 0 3px rgba(106,162,255,.15); }
+
+/* Buttons */
+button {
+	background: linear-gradient(180deg, rgba(106,162,255,.18), rgba(106,162,255,.12));
+	color: var(--text);
+	border: 1px solid rgba(106,162,255,.25);
+	padding: 10px 14px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: .15s ease-in-out;
+}
+button:hover { transform: translateY(-1px); border-color: rgba(106,162,255,.5); box-shadow: 0 8px 24px rgba(106,162,255,.15); }
+button:active { transform: translateY(0); }
+
+.btn-operator { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border-color: rgba(255,255,255,.15); }
+.btn-equals { background: linear-gradient(180deg, var(--primary), var(--primary-600)); color: #0c1326; border-color: transparent; }
+.btn-equals:hover { box-shadow: 0 8px 28px rgba(106,162,255,.4); }
+.btn-danger { background: linear-gradient(180deg, rgba(255,90,116,.2), rgba(255,90,116,.1)); border-color: rgba(255,90,116,.35); }
+.btn-ghost { background: transparent; border-color: rgba(255,255,255,.15); }
+
+/* Calculator */
+.display { background: #0a1124; color: #aef6b1; font-family: ui-monospace, Menlo, Consolas, monospace; padding: 16px; border-radius: 12px; min-height: 48px; border: 1px solid var(--border); box-shadow: inset 0 0 0 1px rgba(255,255,255,.02); }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.grid button { padding: 14px; font-size: 16px; }
+
+/* Expense list */
+.expense-item { display:flex; justify-content: space-between; align-items:center; border-bottom:1px solid var(--border); padding:10px 0; }
+.expense-item button { background: linear-gradient(180deg, rgba(255,90,116,.2), rgba(255,90,116,.1)); border-color: rgba(255,90,116,.35); }

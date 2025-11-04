@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node ./scripts/copy404.js",
-    "preview": "vite preview --port 5173"
+    "preview": "vite preview --port 5173",
+    "deploy": "vite build && node ./scripts/copy404.js && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "gh-pages": "^6.0.0"
   }
 }

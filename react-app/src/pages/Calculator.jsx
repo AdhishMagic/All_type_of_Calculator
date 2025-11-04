@@ -26,9 +26,16 @@ export default function Calculator(){
     <div className="card">
       <div className="display">{text}</div>
       <div className="grid" style={{gridTemplateColumns:'repeat(4, 1fr)'}}>
-        {keys.map(k => (
-          <button key={k} onClick={()=>press(k)}>{k}</button>
-        ))}
+        {keys.map(k => {
+          const cls =
+            k === '=' ? 'btn-equals' :
+            (k === 'C' || k === '⌫') ? 'btn-danger' :
+            (k === '+/-') ? 'btn-ghost' :
+            (['/','*','-','+'].includes(k) ? 'btn-operator' : '')
+          return (
+            <button key={k} className={cls} onClick={()=>press(k)} aria-label={`Key ${k}`}>{k}</button>
+          )
+        })}
       </div>
     </div>
   )
